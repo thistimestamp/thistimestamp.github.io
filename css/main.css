@@ -10,6 +10,10 @@
   font-family: "Lucida Console", Courier, monospace;
 }
 
+* {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
 .container {
   height: 200px;
   display: flex;
