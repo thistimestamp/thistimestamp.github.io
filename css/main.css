@@ -1,3 +1,15 @@
 .center {
   text-align: center;
 }
+
+.serif {
+  font-family: Times, "Times New Roman", Georgia, serif;
+}
+
+.sansserif {
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.monospace {
+  font-family: "Lucida Console", Courier, monospace;
+}
