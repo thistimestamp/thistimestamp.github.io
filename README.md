@@ -1,5 +1,10 @@
-# [thistimestamp.github.io]
+---
+lang: en
+title-meta: ThisTimeStamp
+---
 
-*ThisTimeStamp* is a site that lets you create a link to a timestamp
+# ThisTimeStamp
 
-[thistimestamp.github.io]: https://thistimestamp.github.io
+[ThisTimeStamp] is a site that lets you create a link to a timestamp.
+
+[ThisTimeStamp]: https://thistimestamp.github.io
