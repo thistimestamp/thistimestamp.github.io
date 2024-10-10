@@ -35,6 +35,17 @@ jobs:
           mkdir -p ~/.pandoc/templates
           curl -sSL 'https://github.com/tajmone/pandoc-goodies/raw/refs/heads/master/templates/html5/github/GitHub.html5' -o ~/.pandoc/templates/GitHub.html5
 
+      - name: "Generate a robots.txt file"
+        run: |
+          tee security.txt << EOF
+          Sitemap: $(gh api /repos/${{ github.repository }} --jq '.homepage')/sitemap.txt
+          EOF
+
+      - name: "Generate a sitemap.txt file"
+        run: |
+          tee sitemap.txt << EOF
+          EOF
+
       - name: "Generate a security.txt file"
         run: |
           tee security.txt << EOF
