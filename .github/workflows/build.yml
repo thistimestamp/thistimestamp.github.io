@@ -31,7 +31,7 @@ jobs:
         run: sudo apt install tidy pandoc
 
       - name: "Install templates"
-        run: curl 'https://github.com/tajmone/pandoc-goodies/raw/refs/heads/master/templates/html5/github/GitHub.html5' -O ~/.pandoc/templates/GitHub.html5
+        run: curl 'https://raw.githubusercontent.com/tajmone/pandoc-goodies/refs/heads/master/templates/html5/github/GitHub.html5' -O ~/.pandoc/templates/GitHub.html5
 
       - name: "Generate a security.txt file"
         run: |
