@@ -1,6 +1,6 @@
 ---
 lang: en
-#author-meta: Y. Meyer-Norwood (@norwd)
+author-meta: Y. Meyer-Norwood (@norwd)
 
 title: ThisTimeStamp is Coming Soon!
 title-meta: ThisTimeStamp is Coming Soon!
