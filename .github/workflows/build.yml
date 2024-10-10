@@ -30,6 +30,9 @@ jobs:
       - name: "Install tools"
         run: sudo apt install tidy pandoc
 
+      - name: "Install templates"
+        run: curl 'https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/master/copy_templates.sh' | bash
+
       - name: "Generate a security.txt file"
         run: |
           tee security.txt << EOF
@@ -97,7 +100,7 @@ jobs:
           	rm -f header.html
 
           %.html: %.md
-          	pandoc --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
+          	pandoc --table-of-contents --template=bootstrap_menu.html --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
 
           EOF
 
