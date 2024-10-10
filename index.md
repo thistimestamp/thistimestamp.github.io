@@ -6,10 +6,7 @@ title: ThisTimeStamp is Coming Soon!
 title-meta: ThisTimeStamp is Coming Soon!
 pagetitle: ThisTimeStamp is Coming Soon!
 
-subtitle: |
-  Currently under construction...
-
-  Check back in later and start using ThisTimeStamp
+subtitle: Currently under construction, check back in later and start using ThisTimeStamp!
 
 summary: |
   [ThisTimeStamp] is a site that lets you create a link to a timestamp.
