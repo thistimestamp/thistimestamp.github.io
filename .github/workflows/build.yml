@@ -131,7 +131,7 @@ jobs:
       - name: "Generate a sitemap.txt file"
         run: |
           tee sitemap.txt << EOF
-          $(find . | xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"')
+          $(find . -type f -printf '%P\n' | grep -v '^.git' | xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"')
           EOF
 
       - name: "Archive Pages Artifact"
