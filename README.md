@@ -6,7 +6,8 @@ title: ThisTimeStamp is Coming Soon!
 title-meta: ThisTimeStamp is Coming Soon!
 pagetitle: ThisTimeStamp is Coming Soon!
 subtitle: Check back in later!
-summary: ThisTimeStamp lets you create a link to a timestamp.
+
+#summary: ThisTimeStamp lets you create a link to a timestamp.
 ---
 
 # ThisTimeStamp
