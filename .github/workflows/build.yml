@@ -100,7 +100,7 @@ jobs:
           	rm -f header.html
 
           %.html: %.md
-          	pandoc --table-of-contents --template=easy_template.html --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
+          	pandoc --table-of-contents --template=bootstrap_menu.html --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
 
           EOF
 
