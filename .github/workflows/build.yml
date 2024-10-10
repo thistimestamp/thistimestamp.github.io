@@ -133,7 +133,7 @@ jobs:
           tee sitemap.txt << EOF 
           $(
             find . -type f -printf '%P\n' | \
-            grep -v '^.' | \
+            grep -v '^\.' | \
             sort | \
             xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"'
           )
