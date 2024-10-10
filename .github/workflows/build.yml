@@ -102,7 +102,7 @@ jobs:
           	rm -f header.html
 
           %.html: %.md
-          	pandoc --table-of-contents --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
+          	pandoc --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
 
           EOF
 
