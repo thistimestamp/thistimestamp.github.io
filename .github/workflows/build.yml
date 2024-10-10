@@ -130,9 +130,13 @@ jobs:
 
       - name: "Generate a sitemap.txt file"
         run: |
-          sort << EOF | grep -v '^.git' | tee sitemap.txt
-          sitemap.txt
-          $(find . -type f -printf '%P\n' | xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"')
+          tee sitemap.txt << EOF 
+          $(
+            find . -type f -printf '%P\n' | \
+            grep -v '^.' | \
+            sort | \
+            xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"'
+          )
           EOF
 
       - name: "Archive Pages Artifact"
