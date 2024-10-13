@@ -136,6 +136,7 @@ jobs:
             grep -v '^\.' | \
             sed -e 's/\(\.html\)*$//g' | \
             sort | \
+            uniq | \
             xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"'
           )
           EOF
