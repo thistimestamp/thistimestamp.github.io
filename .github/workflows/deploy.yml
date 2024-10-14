@@ -74,18 +74,9 @@ jobs:
           EOF
 
       - name: "Generate a sitemap.txt file"
-        env: { BASE_URL: '${{ steps.configure-pages.outputs.base_url }}' }
-        run: |
-          tee sitemap.txt << EOF 
-          $(
-            find . -type f -printf '%P\n' | \
-            grep -v '^\.' | \
-            sed -e 's/\(\.html\)*$//g' | \
-            sort | \
-            uniq | \
-            xargs -IPATH echo "${BASE_URL}/PATH"
-          )
-          EOF
+        run: find . -type f -printf "${BASE_URL}/%P\n" | sed -e 's/\(\.html\)*$//g' | sort --unique | tee sitemap.txt
+        env:
+          BASE_URL: '${{ steps.configure-pages.outputs.base_url }}'
 
       - name: "Create a Pages Artifact"
         uses: actions/upload-pages-artifact@v1
