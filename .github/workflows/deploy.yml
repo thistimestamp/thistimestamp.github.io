@@ -69,7 +69,7 @@ jobs:
 
       - name: "Generate a robots.txt file"
         run: |
-          tee security.txt << EOF
+          tee robots.txt << EOF
           Sitemap: ${{ steps.configure-pages.outputs.base_url }}/sitemap.txt
           EOF
 
