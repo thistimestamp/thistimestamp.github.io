@@ -78,8 +78,8 @@ jobs:
           tee version.txt << EOF
           Deployed By: @${{ github.triggering_actor }}
           Deployed At: $(date --universal +'%FT%TZ')
-          Deployment Version: v0.0.${{ github.run_id }}.${{ github.run_number }}
-          Source Version: ${{ github.repository }}@${{ github.sha }} (${{ github.ref }})
+          Deployment Version: v0.0.${{ github.run_number }}.${{ github.run_attempt }}
+          Source Version: ${{github.server_url }}/${{ github.repository }}/tree/${{ github.sha }} (${{ github.ref }})
           EOF
 
       - name: "Generate a sitemap.txt file"
