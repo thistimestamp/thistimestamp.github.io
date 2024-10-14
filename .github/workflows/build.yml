@@ -102,4 +102,6 @@ jobs:
           name: pages
           path: |
             .
+            !CNAME
+            !.nojekyll
             !.git*/**
