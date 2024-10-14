@@ -32,7 +32,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: "Setup Pages"
+      - id: configure-pages
+        name: "Setup Pages"
         uses: actions/configure-pages@v3
         
       - name: "Unarchive Pages Artifact"
@@ -43,10 +44,10 @@ jobs:
       - name: "Generate a security.txt file"
         run: |
           tee security.txt << EOF
-          Contact: $(gh api '/repos/${{ github.repository }}' --jq '.homepage')/contact
-          Policy: $(gh api '/repos/${{ github.repository }}' --jq '.homepage')/security/policy
-          Acknowledgments: $(gh api '/repos/${{ github.repository }}' --jq '.homepage')/humans.txt
-          Canonical: $(gh api '/repos/${{ github.repository }}' --jq '.homepage')/security.txt
+          Contact: ${{ steps.configure-pages.outputs.base_url }}/contact
+          Policy: ${{ steps.configure-pages.outputs.base_url }}/security/policy
+          Acknowledgments: ${{ steps.configure-pages.outputs.base_url }}/humans.txt
+          Canonical: ${{ steps.configure-pages.outputs.base_url }}/security.txt
           Expires: $(date -u +"%Y-12-31T23:59:59.999Z")
           EOF
 
@@ -69,10 +70,11 @@ jobs:
       - name: "Generate a robots.txt file"
         run: |
           tee security.txt << EOF
-          Sitemap: $(gh api '/repos/${{ github.repository }}' --jq '.homepage')/sitemap.txt
+          Sitemap: ${{ steps.configure-pages.outputs.base_url }}/sitemap.txt
           EOF
 
       - name: "Generate a sitemap.txt file"
+        env: { BASE_URL: '${{ steps.configure-pages.outputs.base_url }}' }
         run: |
           tee sitemap.txt << EOF 
           $(
@@ -81,7 +83,7 @@ jobs:
             sed -e 's/\(\.html\)*$//g' | \
             sort | \
             uniq | \
-            xargs -IPATH gh api '/repos/${{ github.repository }}' --jq '.homepage + "/PATH"'
+            xargs -IPATH echo "${BASE_URL}/PATH"
           )
           EOF
 
