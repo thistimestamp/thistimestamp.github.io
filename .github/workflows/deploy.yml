@@ -73,6 +73,15 @@ jobs:
           Sitemap: ${{ steps.configure-pages.outputs.base_url }}/sitemap.txt
           EOF
 
+      - name: "Generate a version.txt file"
+        run: |
+          tee version.txt << EOF
+          Deployed By: @${{ github.triggering_actor }}
+          Deployed At: $(date --universal +'%FT%TZ')
+          Deployment Version: v0.0.${{ github.run_id }}.${{ github.run_number }}
+          Source Version: ${{ github.repository }}@${{ github.sha }} (${{ github.ref }})
+          EOF
+
       - name: "Generate a sitemap.txt file"
         env: { BASE_URL: '${{ steps.configure-pages.outputs.base_url }}' }
         run: |
