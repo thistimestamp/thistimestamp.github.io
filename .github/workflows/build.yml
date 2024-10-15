@@ -41,11 +41,11 @@ jobs:
           MEDIA_TYPE_HEADER: "Accept: application/vnd.github.raw"
           AUTH_TOKEN_HEADER: "Authorization: Bearer ${{ github.token }}"
 
-      - name: "Generate an authors.json file"
-        run: gh api "${ENDPOINT}" --jq "${JQ_QUERY}" | tee authors.json
+      - name: "Generate an authors.yaml file"
+        run: gh api "${ENDPOINT}" --jq "${JQ_QUERY}" | tee authors.yaml
         env:
           ENDPOINT: '/repos/${{ github.repository }}/contributors'
-          JQ_QUERY: '{ authors: [ .[].login ] }'
+          JQ_QUERY: '"author:" + (["", .[].login] | join("\n- "))'
 
       - name: "Generate a changelog.md file"
         run: gh api "${ENDPOINT}" --template "${TEMPLATE}" | tee changelog.md
@@ -74,7 +74,7 @@ jobs:
           	rm -f header.html
 
           %.html: %.md
-          	pandoc --metadata-file=authors.json --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
+          	pandoc --metadata-file=authors.yaml --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
 
           EOF
 
