@@ -28,21 +28,21 @@ jobs:
           curl -sSL 'https://github.com/tajmone/pandoc-goodies/raw/refs/heads/master/templates/html5/github/GitHub.html5' -o ~/.pandoc/templates/GitHub.html5
 
       - name: "Retrieve Code of Conduct"
-        run: curl -H "${MEDIA_TYPE_HEADER}" -H "${AUTH_TOKEN_HEADER}" --create-dirs -o code-of-conduct.md "${CONTENTS_ENDPOINT}/CODE_OF_CONDUCT.md"
+        run: curl --header "${MEDIA_TYPE_HEADER}" --header "${AUTH_TOKEN_HEADER}" --create-dirs --output code-of-conduct.md "${CONTENTS_ENDPOINT}/CODE_OF_CONDUCT.md"
         env:
           CONTENTS_ENDPOINT: '${{ github.api_url }}/repos/${{ github.repository_owner }}/.github/contents'
           MEDIA_TYPE_HEADER: "Accept: application/vnd.github.raw"
           AUTH_TOKEN_HEADER: "Authorization: Bearer ${{ github.token }}"
 
       - name: "Retrieve Security Policy"
-        run: curl -H "${MEDIA_TYPE_HEADER}" -H "${AUTH_TOKEN_HEADER}" --create-dirs -o security/policy.md "${CONTENTS_ENDPOINT}/SECURITY.md"
+        run: curl --header "${MEDIA_TYPE_HEADER}" --header "${AUTH_TOKEN_HEADER}" --create-dirs --output security/policy.md "${CONTENTS_ENDPOINT}/SECURITY.md"
         env:
           CONTENTS_ENDPOINT: '${{ github.api_url }}/repos/${{ github.repository_owner }}/.github/contents'
           MEDIA_TYPE_HEADER: "Accept: application/vnd.github.raw"
           AUTH_TOKEN_HEADER: "Authorization: Bearer ${{ github.token }}"
 
       - name: "Retrieve Contribution Guidlines"
-        run: curl -H "${MEDIA_TYPE_HEADER}" -H "${AUTH_TOKEN_HEADER}" --create-dirs -o contributing.md "${CONTENTS_ENDPOINT}/CONTRIBUTING.md"
+        run: curl --header "${MEDIA_TYPE_HEADER}" --header "${AUTH_TOKEN_HEADER}" --create-dirs --output contributing.md "${CONTENTS_ENDPOINT}/CONTRIBUTING.md"
         env:
           CONTENTS_ENDPOINT: '${{ github.api_url }}/repos/${{ github.repository_owner }}/.github/contents'
           MEDIA_TYPE_HEADER: "Accept: application/vnd.github.raw"
