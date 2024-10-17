@@ -28,7 +28,7 @@ jobs:
           curl -sSL 'https://github.com/tajmone/pandoc-goodies/raw/refs/heads/master/templates/html5/github/GitHub.html5' -o ~/.pandoc/templates/GitHub.html5
 
       - name: "Retrieve Code of Conduct"
-        run: curl  -H "${MEDIA_TYPE_HEADER}" -H "${AUTH_TOKEN_HEADER}" --create-dirs -o code-of-conduct.md "${CONTENTS_ENDPOINT}/CODE_OF_CONDUCT.md"
+        run: curl -H "${MEDIA_TYPE_HEADER}" -H "${AUTH_TOKEN_HEADER}" --create-dirs -o code-of-conduct.md "${CONTENTS_ENDPOINT}/CODE_OF_CONDUCT.md"
         env:
           CONTENTS_ENDPOINT: '${{ github.api_url }}/repos/${{ github.repository_owner }}/.github/contents'
           MEDIA_TYPE_HEADER: "Accept: application/vnd.github.raw"
