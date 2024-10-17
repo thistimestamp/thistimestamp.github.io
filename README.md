@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="img/tts.png" alt=""/>
+  <img src="img/tts.png" alt="ThisTimeStamp Logo"/>
 </p>
 
 # ThisTimeStamp
