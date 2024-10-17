@@ -61,13 +61,11 @@ jobs:
           TEMPLATE: |
             ---
             lang: en
-            title-meta: Changelog
+            title: Changelog
             ...
 
-            # Change Log
-
             {{range .}}
-            ### [{{.name}}](https://${{ github.server_url }}/${{ github.repository }}/releases/tag/{{.tag_name}})
+            ## [{{.name}}](https://${{ github.server_url }}/${{ github.repository }}/releases/tag/{{.tag_name}})
 
             {{.body}}
 
@@ -81,7 +79,7 @@ jobs:
           	rm -f header.html
 
           %.html: %.md
-          	pandoc --metadata-file=authors.yaml --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
+          	pandoc --title-prefix="${{ github.repository_owner }}" --metadata-file=authors.yaml --template=GitHub.html5 --include-in-header=header.html --from markdown+yaml_metadata_block+backtick_code_blocks+fenced_code_attributes+inline_notes+emoji --to html --standalone $< --output $@
 
           EOF
 
