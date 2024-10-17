@@ -76,10 +76,9 @@ jobs:
       - name: "Generate a version.txt file"
         run: |
           tee version.txt << EOF
-          Deployed By: @${{ github.triggering_actor }}
-          Deployed At: $(date --universal +'%FT%TZ')
-          Deployment Version: v0.0.${{ github.run_number }}.${{ github.run_attempt }}
-          Source Version: ${{github.server_url }}/${{ github.repository }}/tree/$(echo "${{ github.sha }}" | head -c 7) (${{ github.ref }})
+          Deployed: $(date --universal +'%FT%TZ')
+          Version: v0.0.${{ github.run_number }}.$((${{ github.run_attempt }} - 1))
+          Source: ${{github.server_url }}/${{ github.repository }}/tree/$(echo "${{ github.sha }}" | head -c 7)
           EOF
 
       - name: "Generate a sitemap.txt file"
