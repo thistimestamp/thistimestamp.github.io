@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="img/tts.png" alt=""/>
+</p>
+
 # ThisTimeStamp
 
 [ThisTimeStamp] is a site that lets you create a link to a timestamp.
